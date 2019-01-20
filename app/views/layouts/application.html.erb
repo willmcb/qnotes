@@ -12,12 +12,9 @@
   <body>
      <% if current_user %>
       <!-- logged in -->
-      <%= "Logged in as #{current_user.email}" %> | <%= link_to 'Home', root_path %> | <%= link_to 'Log out', logout_path, method: :delete %>
-    <% else %>
-      <!-- not logged in -->
-      <%= link_to 'Home', root_path %> | <%= link_to 'Log in', login_path %> or <%= link_to 'Create account', new_user_path %>
+      <%= "Hi, #{current_user.username}" %> | <%= link_to 'Home', root_path %> | <%= link_to 'Log out', logout_path, method: :delete %>
+      <hr>
     <% end %>
-    <hr>
 
     <% if notice %>
       <%= notice %>
