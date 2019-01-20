@@ -31,7 +31,7 @@ RSpec.describe "Notes workflow" do
   end
 
   def login
-    visit 'login'
+    visit '/'
     fill_in 'Email', with: @test_user.email
     fill_in 'Password', with: 'password'
     click_button 'Log in'
