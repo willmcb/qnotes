@@ -4,6 +4,7 @@ RSpec.describe "User authentication" do
   let(:sign_up_error_message) { "Oops, couldn't create account. Please make" \
                                 " sure you are using a valid email and password " \
                                 "and try again."}
+  let(:success_message) { 'Account created successfully' }
   before :each do
     create(:user)
   end
@@ -16,7 +17,7 @@ RSpec.describe "User authentication" do
      fill_in 'Password', with: 'password'
      fill_in 'Password confirmation', with: 'password'
      click_on 'Sign up'
-     expect(page).to have_content 'Account created successfully'
+     expect(page).to have_content success_message
    end
 
    it "shows an error if the email is already taken" do
@@ -51,7 +52,8 @@ RSpec.describe "User authentication" do
   end
 
   describe "Sign in" do
-    xit "allows a user to sign in if they have the correct username and password" do
+    it "allows a user to sign in if they have the correct username and password" do
+
 
     end
 
