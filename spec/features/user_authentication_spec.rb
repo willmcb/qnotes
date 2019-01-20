@@ -4,9 +4,12 @@ RSpec.describe "User authentication" do
   let(:sign_up_error_message) { "Oops, couldn't create account. Please make" \
                                 " sure you are using a valid email and password " \
                                 "and try again."}
-  let(:success_message) { 'Account created successfully' }
+  let(:sign_up_success_message) { 'Account created successfully' }
+
+  let(:login_error_message) { 'Incorrect email or password, try again.' }
+  let(:login_success_message) { 'Successfully logged in!' }
   before :each do
-    create(:user)
+    @test_user = create(:user)
   end
 
   describe "Sign up" do
@@ -17,7 +20,7 @@ RSpec.describe "User authentication" do
      fill_in 'Password', with: 'password'
      fill_in 'Password confirmation', with: 'password'
      click_on 'Sign up'
-     expect(page).to have_content success_message
+     expect(page).to have_content sign_up_success_message
    end
 
    it "shows an error if the email is already taken" do
@@ -53,26 +56,47 @@ RSpec.describe "User authentication" do
 
   describe "Sign in" do
     it "allows a user to sign in if they have the correct username and password" do
-
-
+      visit 'login'
+      fill_in 'Email', with: @test_user.email
+      fill_in 'Password', with: 'password'
+      click_on 'Log in'
+      expect(page).to have_content(login_success_message)
     end
 
-    xit "stops a user signing in if there username is not registered" do
-
+    it "stops a user signing in if there username is not registered" do
+      visit 'login'
+      fill_in 'Email', with: 'notregistered@nothing.com'
+      fill_in 'Password', with: 'password'
+      click_on 'Log in'
+      expect(page).to have_content(login_error_message)
     end
 
-    xit "stops a user signing in if there password is incorrect" do
-
+    it "stops a user signing in if there password is incorrect" do
+      visit 'login'
+      fill_in 'Email', with: @test_user.email
+      fill_in 'Password', with: 'incorrect_password'
+      click_on 'Log in'
+      expect(page).to have_content(login_error_message)
     end
 
-    xit "stops a user from signing in unless they enter a username and password" do
-
+    it "stops a user from signing in unless they enter a username and password" do
+      visit 'login'
+      fill_in 'Email', with: ''
+      fill_in 'Password', with: ''
+      click_on 'Log in'
+      expect(page).to have_content(login_error_message)
     end
   end
 
-
   describe "Sign out" do
-    xit "allows the user to sign out if they click the sign out button once signed in" do
+    it "allows the user to sign out if they click the sign out button once signed in" do
+      visit 'login'
+      fill_in 'Email', with: @test_user.email
+      fill_in 'Password', with: 'password'
+      click_on 'Log in'
+      click_on 'Log out'
+      expect(page).to_not have_content(@test_user.email)
+      expect(page).to have_content('Logged out!')
 
     end
   end
