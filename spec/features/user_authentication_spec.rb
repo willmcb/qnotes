@@ -11,8 +11,8 @@ RSpec.describe "User authentication" do
   describe "Sign up" do
    it "allows a user to sign up" do
      visit 'users/new'
-     fill_in 'Username', with: 'testuser'
-     fill_in 'Email', with: 'testuser@test.com'
+     fill_in 'Username', with: 'dave'
+     fill_in 'Email', with: 'dave@test.com'
      fill_in 'Password', with: 'password'
      fill_in 'Password confirmation', with: 'password'
      click_on 'Sign up'
@@ -21,8 +21,8 @@ RSpec.describe "User authentication" do
 
    it "shows an error if the email is already taken" do
      visit 'users/new'
-     fill_in 'Username', with: 'testuser'
-     fill_in 'Email', with: 'testuser2@test.com'
+     fill_in 'Username', with: 'testuser7'
+     fill_in 'Email', with: 'testuser@test.com'
      fill_in 'Password', with: 'password'
      fill_in 'Password confirmation', with: 'password'
      click_on 'Sign up'
@@ -31,8 +31,8 @@ RSpec.describe "User authentication" do
 
    it "shows an error if the password and password confirmation do not match" do
      visit 'users/new'
-     fill_in 'Username', with: 'testuser'
-     fill_in 'Email', with: 'testuser@test.com'
+     fill_in 'Username', with: 'testuser4'
+     fill_in 'Email', with: 'testuser4@test.com'
      fill_in 'Password', with: 'password'
      fill_in 'Password confirmation', with: 'password2'
      click_on 'Sign up'
@@ -41,10 +41,10 @@ RSpec.describe "User authentication" do
 
    it "shows an error if the username is already taken" do
      visit 'users/new'
-     fill_in 'Username', with: 'testuser2'
-     fill_in 'Email', with: 'testuser@test.com'
+     fill_in 'Username', with: 'testuser'
+     fill_in 'Email', with: 'testuser9@test.com'
      fill_in 'Password', with: 'password'
-     fill_in 'Password confirmation', with: 'password2'
+     fill_in 'Password confirmation', with: 'password'
      click_on 'Sign up'
      expect(page).to have_content sign_up_error_message
    end
