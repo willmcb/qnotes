@@ -14,4 +14,10 @@ Rails.application.routes.draw do
 	# log out:
 	delete '/logout' => 'sessions#destroy'
 
+
+  # notes
+  get 'notes/new' => 'notes#new'
+  get 'notes/:id' => 'notes#show', as: :show_note
+  post 'notes' => 'notes#create'
+
 end

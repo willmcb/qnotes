@@ -19,7 +19,7 @@ RSpec.describe "User authentication" do
      fill_in 'Email', with: 'dave@test.com'
      fill_in 'Password', with: 'password'
      fill_in 'Password confirmation', with: 'password'
-     click_on 'Sign up'
+     click_button 'Sign up'
      expect(page).to have_content sign_up_success_message
    end
 
@@ -29,7 +29,7 @@ RSpec.describe "User authentication" do
      fill_in 'Email', with: 'testuser@test.com'
      fill_in 'Password', with: 'password'
      fill_in 'Password confirmation', with: 'password'
-     click_on 'Sign up'
+     click_button 'Sign up'
      expect(page).to have_content sign_up_error_message
    end
 
@@ -39,7 +39,7 @@ RSpec.describe "User authentication" do
      fill_in 'Email', with: 'testuser4@test.com'
      fill_in 'Password', with: 'password'
      fill_in 'Password confirmation', with: 'password2'
-     click_on 'Sign up'
+     click_button 'Sign up'
      expect(page).to have_content sign_up_error_message
    end
 
@@ -49,7 +49,7 @@ RSpec.describe "User authentication" do
      fill_in 'Email', with: 'testuser9@test.com'
      fill_in 'Password', with: 'password'
      fill_in 'Password confirmation', with: 'password'
-     click_on 'Sign up'
+     click_button 'Sign up'
      expect(page).to have_content sign_up_error_message
    end
   end
@@ -59,7 +59,7 @@ RSpec.describe "User authentication" do
       visit 'login'
       fill_in 'Email', with: @test_user.email
       fill_in 'Password', with: 'password'
-      click_on 'Log in'
+      click_button 'Log in'
       expect(page).to have_content(login_success_message)
     end
 
@@ -67,7 +67,7 @@ RSpec.describe "User authentication" do
       visit 'login'
       fill_in 'Email', with: 'notregistered@nothing.com'
       fill_in 'Password', with: 'password'
-      click_on 'Log in'
+      click_button 'Log in'
       expect(page).to have_content(login_error_message)
     end
 
@@ -75,7 +75,7 @@ RSpec.describe "User authentication" do
       visit 'login'
       fill_in 'Email', with: @test_user.email
       fill_in 'Password', with: 'incorrect_password'
-      click_on 'Log in'
+      click_button 'Log in'
       expect(page).to have_content(login_error_message)
     end
 
@@ -83,7 +83,7 @@ RSpec.describe "User authentication" do
       visit 'login'
       fill_in 'Email', with: ''
       fill_in 'Password', with: ''
-      click_on 'Log in'
+      click_button 'Log in'
       expect(page).to have_content(login_error_message)
     end
   end
@@ -93,7 +93,7 @@ RSpec.describe "User authentication" do
       visit 'login'
       fill_in 'Email', with: @test_user.email
       fill_in 'Password', with: 'password'
-      click_on 'Log in'
+      click_button 'Log in'
       click_on 'Log out'
       expect(page).to_not have_content(@test_user.email)
       expect(page).to have_content('Logged out!')
