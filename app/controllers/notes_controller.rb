@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   def new
     @note = Note.new
+    @collections = Collections.all
   end
 
   def create
