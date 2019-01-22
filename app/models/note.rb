@@ -6,4 +6,5 @@ class Note < ApplicationRecord
   validates_length_of :title, maximum: 300, allow_blank: false
 
   validates :body, presence: true
+
 end

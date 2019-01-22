@@ -27,6 +27,11 @@ RSpec.describe Note, type: :model do
       note = Note.create(title: 'This is a note', body: 'This is a note body')
       expect(note).to_not be_valid
     end
+
+    it 'creates a default collection when a new user is created' do
+      collection = @user.collections.find_by(name: 'default')
+      expect(collection).to be_valid
+    end
   end
 
   describe 'validation' do
