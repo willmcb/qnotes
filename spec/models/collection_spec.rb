@@ -29,7 +29,7 @@ RSpec.describe Collection, type: :model do
   end
 
   describe 'interaction with notes' do
-    it 'allows a note to be added to a collection' do
+    xit 'allows a note to be added to a collection' do
 
     end
 

@@ -6,9 +6,11 @@ class NotesController < ApplicationController
   end
 
   def create
-    note = current_user.notes.new(note_params)
+    note = current_user.notes.new(title: note_params[:title],
+                                  body: note_params[:body],
+                                  collection_id: note_params[:collection])
     if note.save!
-       puts "Note has been saved"
+        flash[:notice] = "Note has been saved"
     else
       flash[:notice] = note.errors.full_messages.join(", ")
     end
@@ -22,7 +24,7 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:title, :body, :collection_id)
+    params.require(:note).permit(:title, :body, :collection)
   end
 
   def show_note_params

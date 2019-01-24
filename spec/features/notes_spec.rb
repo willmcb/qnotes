@@ -18,8 +18,14 @@ RSpec.describe "Notes workflow" do
     end
 
     it "makes a user log in to create a new note" do
-      add_note
-      expect(page).to have_content("Please login to post a note.")
+      visit "notes/new"
+      expect(page).to have_content("You must be logged in to access this page")
+    end
+
+    it "collection dropdown has 'default' collection" do
+      login
+      visit "notes/new"
+      expect(page).to have_content("default")
     end
   end
 
@@ -27,6 +33,7 @@ RSpec.describe "Notes workflow" do
     visit "notes/new"
     fill_in "Title", with: note_title
     fill_in "Body", with: note_body
+    select "default", from: "note[collection]"
     click_button "Add note"
   end
 
