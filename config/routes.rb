@@ -24,6 +24,6 @@ Rails.application.routes.draw do
   # collections
   get 'collections' => 'collections#index', as: 'collections'
   get 'collections/new' => 'collections#new', as: 'new_collection'
-  post 'collections/create' => 'collections#create', as: 'create_collection'
+  post '/collections' => 'collections#create', as: 'create_collection'
 
 end
