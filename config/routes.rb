@@ -21,4 +21,9 @@ Rails.application.routes.draw do
   get 'notes/:id' => 'notes#show', as: :show_note
   post 'notes' => 'notes#create'
 
+  # collections
+  get 'collections' => 'collections#index', as: 'collections'
+  get 'collections/new' => 'collections#new', as: 'new_collection'
+  post 'collections/create' => 'collections#create', as: 'create_collection'
+
 end
