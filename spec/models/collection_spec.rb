@@ -29,11 +29,19 @@ RSpec.describe Collection, type: :model do
   end
 
   describe 'interaction with notes' do
-    xit 'allows a note to be added to a collection' do
+    it 'allows a note to be added to a collection' do
+      erlang_col = @user.collections.create(name: "erlang")
+      note = @user.notes.create(title: "something erlang", body: "this is a note about erlang", collection: erlang_col)
+      expect(note.collection).to eq(erlang_col)
 
     end
 
-    xit 'allows a note to be removed from a collection' do
+    it 'allows a note to be removed from a collectioni, and added to another' do
+      erlang_col = @user.collections.create(name: "erlang")
+      haskel_col = @user.collections.create(name: "haskel")
+      note = @user.notes.create(title: "something erlang", body: "this is a note about erlang", collection: erlang_col)
+      note.update(collection: haskel_col)
+      expect(note.collection).to eq(haskel_col)
     end
   end
 
