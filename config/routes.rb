@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 	post 'users' => 'users#create'
 
   # log in:
-	get '/login' => 'sessions#new'
+	get '/login' => 'sessions#new', as: 'login'
 
 	# create (post) action for when log in form is submitted:
   post '/' => 'sessions#create'
@@ -20,5 +20,10 @@ Rails.application.routes.draw do
   get 'notes/new' => 'notes#new'
   get 'notes/:id' => 'notes#show', as: :show_note
   post 'notes' => 'notes#create'
+
+  # collections
+  get 'collections' => 'collections#index', as: 'collections'
+  get 'collections/new' => 'collections#new', as: 'new_collection'
+  post 'collections' => 'collections#create', as: 'create_collection'
 
 end

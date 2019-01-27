@@ -1,21 +1,20 @@
 class NotesController < ApplicationController
+  before_action :authorize
+
   def new
     @note = Note.new
   end
 
   def create
-    if current_user
-      note = current_user.notes.new(note_params)
-      if note.save!
-         puts "Note has been saved"
-      else
-        flash[:notice] = note.errors.full_messages.join(", ")
-      end
-      redirect_to show_note_path(id: note.id)
+    note = current_user.notes.new(title: note_params[:title],
+                                  body: note_params[:body],
+                                  collection_id: note_params[:collection])
+    if note.save!
+        flash[:notice] = "Note has been saved"
     else
-      flash[:notice] =  "Please login to post a note."
-      redirect_to new_user_path
+      flash[:notice] = note.errors.full_messages.join(", ")
     end
+    redirect_to show_note_path(id: note.id)
   end
 
   def show
@@ -25,7 +24,7 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:title, :body)
+    params.require(:note).permit(:title, :body, :collection)
   end
 
   def show_note_params

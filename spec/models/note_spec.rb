@@ -4,10 +4,12 @@ RSpec.describe Note, type: :model do
 
   before :each do
     @user = create(:user)
+    @collection = @user.collections.create(name: 'test')
   end
   describe 'creation' do
     it 'allows a user to create a note' do
-      note = @user.notes.create(title: 'This is a note', body: 'This is a note body')
+      note = @user.notes.create(title: 'This is a note', body: 'This is a note body',
+                                collection_id: @collection.id)
       expect(note).to be_valid
     end
 
@@ -24,6 +26,11 @@ RSpec.describe Note, type: :model do
     it 'do doesn\'t allow a note to be created if it has no user' do
       note = Note.create(title: 'This is a note', body: 'This is a note body')
       expect(note).to_not be_valid
+    end
+
+    it 'creates a default collection when a new user is created' do
+      collection = @user.collections.find_by(name: 'default')
+      expect(collection).to be_valid
     end
   end
 
