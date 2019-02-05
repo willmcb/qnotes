@@ -1,0 +1,7 @@
+= form_with model: Collection.new do |f|
+  %div
+    = f.label :name
+    = f.text_field :name, autofocus: true
+  %div
+    = f.submit "Add collection"
+
