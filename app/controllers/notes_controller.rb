@@ -9,12 +9,13 @@ class NotesController < ApplicationController
     note = current_user.notes.new(title: note_params[:title],
                                   body: note_params[:body],
                                   collection_id: note_params[:collection])
-    if note.save!
-        flash[:notice] = "Note has been saved"
+    if note.valid? && note.save!
+      flash[:notice] = "Note has been saved"
+      redirect_to show_note_path(note)
     else
       flash[:notice] = note.errors.full_messages.join(", ")
+      redirect_to notes_new_path
     end
-    redirect_to show_note_path(id: note.id)
   end
 
   def show

@@ -1,0 +1,11 @@
+%h1.logo Qnotes
+%h3.tag_line A simple way to organise your markdown code notes
+= form_for :login do |f|
+  %div
+    = f.label :email
+    = f.text_field :email, autofocus: true
+  %div
+    = f.label :password
+    = f.password_field :password
+  %div
+    = f.submit "Log in"
