@@ -17,13 +17,13 @@ Rails.application.routes.draw do
 
 
   # notes
-  get 'notes/new' => 'notes#new'
-  get 'notes/:id' => 'notes#show', as: :show_note
-  post 'notes' => 'notes#create'
+  resources :notes
 
   # collections
   get 'collections' => 'collections#index', as: 'collections'
   get 'collections/new' => 'collections#new', as: 'new_collection'
   post 'collections' => 'collections#create', as: 'create_collection'
 
+  # tags
+  get 'tags/:tag', to: 'notes#index', as: :tag
 end

@@ -1,13 +1,14 @@
-= form_for @note do |f|
-  %div
-    = f.label :title
-    = f.text_field :title, autofocus: true
-  %div
-    = f.label :body
-    = f.text_field :body
-  %div
-    = f.label :collection
-    = f.collection_select :collection, current_user.collections, :id, :name, include_blank: false
-  %div
-    = f.submit "Add note"
+.col-md-8.offset-2
+  %h1.text-center New Note
+  = simple_form_for @note, url: notes_path do |f|
+    %div
+      = f.input :title, autofocus: true
+    %div
+      = f.input :body
+    %div
+      = f.collection_select :collection, current_user.collections, :id, :name, include_blank: false
+    %div
+      = f.input :tag_ids, as: :select, collection: Tag.order(:name), label_method: :name,input_html: {multiple: true}
+    %div
+      = f.submit "Add note", class: 'btn btn-lg btn-primary float-right'
 

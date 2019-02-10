@@ -1,0 +1,8 @@
+.col-md-8.offset-2
+  - @notes.each do |note|
+    %h2= note.title
+    %p= truncate(note.body, length: 50)
+    %p
+      %small
+        Tags: #{raw note.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')}
+    %p= link_to "See note", note_path(note)

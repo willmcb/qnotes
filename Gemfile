@@ -35,11 +35,18 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'haml'
 
-gem 'bootstrap', '~> 4.2.1'
-gem 'jquery-rails'
+gem 'simple_form'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+gem 'jquery-rails'
+gem 'popper_js', '~> 1.14.5'
+gem 'bootstrap', '~> 4.2.1'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+  gem 'rails-assets-chosen'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -63,3 +70,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+

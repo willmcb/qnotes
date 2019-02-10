@@ -1,4 +1,7 @@
-- if @note
-  %h2= @note.title
+.col-md-8.offset-2
+  %h1= @note.title
   %p= @note.body
+  %p
+    %small
+      Tags: #{raw @note.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')}
 

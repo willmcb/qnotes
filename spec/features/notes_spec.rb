@@ -29,6 +29,23 @@ RSpec.describe "Notes workflow" do
     end
   end
 
+  describe "index" do
+    xit "can return all notes" do
+
+    end
+
+    xit "can return all notes of a certain tag" do
+
+    end
+
+    xit "can return all notes in a collection" do
+
+    end
+
+    xit "can return all notes within a collection with a given tag" do
+
+    end
+  end
   def add_note
     visit "notes/new"
     fill_in "Title", with: note_title
