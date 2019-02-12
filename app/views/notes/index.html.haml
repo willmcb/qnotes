@@ -5,4 +5,7 @@
     %p
       %small
         Tags: #{raw note.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')}
+    %p
+      %small
+        Collection: #{link_to note.collection.name, collection_path(note.collection)}
     %p= link_to "See note", note_path(note)

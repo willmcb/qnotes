@@ -10,13 +10,10 @@ class NotesController < ApplicationController
   end
 
   def create
-    # TODO: refactor this
-    @tags = tags(note_params[:tag_ids])
-    @collection = Collection.find(note_params[:collection])
     @note = current_user.notes.new(title: note_params[:title],
                                    body: note_params[:body],
-                                   collection: @collection,
-                                   tags: @tags)
+                                   collection_id: note_params[:collection],
+                                   tag_ids: note_params[:tag_ids])
     if @note.valid? && @note.save!
       flash[:notice] = "Note has been saved"
       redirect_to @note
@@ -37,7 +34,7 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title, :body, :collection, :tag_ids => [])
+    params.require(:note).permit(:title, :body, :collection, tag_ids: [])
   end
 end
 

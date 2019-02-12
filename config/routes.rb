@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get 'users/new' => 'users#new', as: :new_user
 	post 'users' => 'users#create'
 
-  # log in:
+  # sessions
 	get '/login' => 'sessions#new', as: 'login'
+	delete '/logout' => 'sessions#destroy'
 
 	# create (post) action for when log in form is submitted:
   post '/' => 'sessions#create'
@@ -15,14 +16,11 @@ Rails.application.routes.draw do
 	# log out:
 	delete '/logout' => 'sessions#destroy'
 
-
   # notes
   resources :notes
 
   # collections
-  get 'collections' => 'collections#index', as: 'collections'
-  get 'collections/new' => 'collections#new', as: 'new_collection'
-  post 'collections' => 'collections#create', as: 'create_collection'
+  resources :collections
 
   # tags
   get 'tags/:tag', to: 'notes#index', as: :tag

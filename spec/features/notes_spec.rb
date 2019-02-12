@@ -31,18 +31,11 @@ RSpec.describe "Notes workflow" do
 
   describe "index" do
     xit "can return all notes" do
-
     end
+  end
 
-    xit "can return all notes of a certain tag" do
-
-    end
-
-    xit "can return all notes in a collection" do
-
-    end
-
-    xit "can return all notes within a collection with a given tag" do
+  describe "interaction with collections and tags" do
+    xit "can return notes associated with a tag and a collection" do
 
     end
   end
