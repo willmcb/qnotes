@@ -6,7 +6,12 @@ class CollectionsController < ApplicationController
   end
 
   def new
-    @Collection = Collection.new
+    @collection = Collection.new
+  end
+
+  def show
+    @collection = Collection.find(params[:id])
+    @notes = @collection.notes
   end
 
   def create
@@ -23,7 +28,7 @@ class CollectionsController < ApplicationController
   private
 
   def collection_params
-    params.require(:collection).permit(:name)
+    params.require(:collection).permit(:name, :id)
   end
 end
 
