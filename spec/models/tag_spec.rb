@@ -23,7 +23,6 @@ RSpec.describe Tag, type: :model do
                                  body: "this is a note body",
                                  tags: [@tag],
                                  collection: @collection)
-      puts "notes: #{@tag.notes}"
       expect(@tag.notes).to include(note, note2)
     end
   end
