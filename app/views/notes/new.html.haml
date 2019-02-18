@@ -1,10 +1,10 @@
-.col-md-8.offset-2
+.col-md-8.col-sm-10.offset-2
   %h1.text-center New Note
   = simple_form_for @note, url: notes_path do |f|
     %div
-      = f.input :title, autofocus: true
+      = f.input :title, autofocus: true, required: false
     %div
-      = f.input :body
+      = f.input :body, :as => :text, :input_html => { 'rows' => 10}, required: false
     %div
       = f.collection_select :collection, current_user.collections, :id, :name, include_blank: false
     %div
