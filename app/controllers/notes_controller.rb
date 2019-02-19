@@ -25,7 +25,6 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.find(params[:id])
-    @markdown_body = markdown.render(@note.body)
   end
 
   private
@@ -36,11 +35,6 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:title, :body, :collection, tag_ids: [])
-  end
-
-  def markdown
-     config = Redcarpet::Render::HTML.new(prettyify: true, hard_wrap: true)
-     Redcarpet::Markdown.new(config)
   end
 end
 
