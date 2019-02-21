@@ -1,7 +1,5 @@
 # README
 
-TODO: Test the MD render helper in application_helpers
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

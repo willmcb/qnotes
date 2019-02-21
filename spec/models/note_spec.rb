@@ -59,4 +59,14 @@ RSpec.describe Note, type: :model do
       expect(note).to_not be_valid
     end
   end
+
+  describe 'data transformation' do
+    it 'adds a newline before and before end of code block' do
+      body = "something\r\n```javascript\r\nconsole.log(\"hello\")\r\n```"
+      newlines_added = "something\r\n\n```javascript\r\nconsole.log(\"hello\")\r\n\n```"
+      note = @user.notes.create(title: 'newline test note', body: body, collection_id: @collection.id )
+      expect(note.body).to match(newlines_added)
+    end
+
+  end
 end

@@ -10,6 +10,11 @@ class Note < ApplicationRecord
 
   validates :body, presence: true
 
+  before_save do
+    # add newline before code blocks
+    self.body.gsub!(/```/, "\n```")
+  end
+
   def self.tagged_with(name)
     Tag.find_by!(name: name).notes
   end
