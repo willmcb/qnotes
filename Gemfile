@@ -42,6 +42,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # markdown parser
 gem 'redcarpet', '~> 3.4'
+gem 'coderay', '~> 1.1', '>= 1.1.2'
+
 
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.5'

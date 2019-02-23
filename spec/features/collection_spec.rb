@@ -15,7 +15,7 @@ RSpec.describe "Collections workflow" do
   end
 
   it "allows a user to create and view collection" do
-    login
+    login(@test_user)
     visit 'collections/new'
     fill_in 'Name', with: collection_name
     click_button 'Add collection'
@@ -23,7 +23,7 @@ RSpec.describe "Collections workflow" do
   end
 
   it 'allows a new collection to be selected when the user tries to add a new note' do
-    login
+    login(@test_user)
     visit 'collections/new'
     fill_in 'Name', with: another_collection_name
     click_button 'Add collection'
@@ -32,7 +32,7 @@ RSpec.describe "Collections workflow" do
   end
 
   it 'allows a user to add a collection to a note' do
-    login
+    login(@test_user)
     visit 'notes/new'
     fill_in 'Title', with: note_title
     fill_in 'Body', with: "Note body about ruby note"
@@ -45,7 +45,7 @@ RSpec.describe "Collections workflow" do
   end
 
   it 'allows allows a user to create and tag note' do
-    login
+    login(@test_user)
     visit 'notes/new'
     fill_in 'Title', with: note_title
     fill_in 'Body', with: "Note body about ruby note"
@@ -57,7 +57,7 @@ RSpec.describe "Collections workflow" do
   end
 
   it 'allows a user to view all the notes asscociated with a collection' do
-    login
+    login(@test_user)
     visit new_note_path
     fill_in 'Title', with: note_title
     fill_in 'Body', with: "Note body about ruby note"
@@ -71,12 +71,5 @@ RSpec.describe "Collections workflow" do
     click_button 'Add note'
     click_link 'Java'
     expect(page).to have_content(note_title, note_title_two)
-  end
-
-  def login
-    visit '/'
-    fill_in 'Email', with: @test_user.email
-    fill_in 'Password', with: 'password'
-    click_button 'Log in'
   end
 end

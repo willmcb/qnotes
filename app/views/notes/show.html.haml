@@ -1,6 +1,6 @@
 .col-md-8.offset-2
-  %h3= @note.title
-  %p= @markdown_body.html_safe
+  %h4= @note.title
+  %p= markdown(@note.body)
   %p
     %small
       Tags: #{raw @note.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')}
