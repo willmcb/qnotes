@@ -3,7 +3,7 @@
     %h2= note.title
     %p
       %small
-        Tags: #{raw note.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')}
+        Tags: #{raw note.tags.map { |tag| link_to tag.name, tag_path(tag.id) }.join(', ')}
     %p
       %small
         Collection: #{link_to note.collection.name, collection_path(note.collection)}

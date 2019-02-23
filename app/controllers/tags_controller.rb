@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
 
   def index
-    @tags = current_user.tags.all
+    @tags = current_user.tags
   end
 
   def new
@@ -9,7 +9,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = current_user.tags.new(title: note_params[:title])
+    @tag = current_user.tags.new(name: note_params[:name])
     if @tag.valid? && @tag.save!
       flash[:notice] = "New tag has been saved"
       redirect_to new_tag_path
@@ -20,12 +20,12 @@ class TagsController < ApplicationController
   end
 
   def show
-    @tag = Tag.find(params[:id])
+    @tag = current_user.tags.find(params[:id])
     @notes = @tag.notes
   end
 
   private
   def note_params
-    params.require(:tag).permit(:title)
+    params.require(:tag).permit(:name)
   end
 end
