@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   # collections
   resources :collections
 
+  resources :tags, only: [:index, :create, :new, :show]
+
   # tags
-  get 'tags/:tag', to: 'notes#index', as: :tag
+  # get 'tags/:tag', to: 'notes#index', as: :tag
 end

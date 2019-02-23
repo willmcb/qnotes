@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe Tag, type: :model do
   before :each do
     @user = create(:user)
-    @tag = Tag.create(name: 'ruby')
+    @tag = @user.tags.create(name: 'ruby')
     @collection = @user.collections.create(name: 'test')
   end
 
   it "must have a name" do
-     expect(Tag.new).to_not be_valid
-     expect(Tag.new(name: "oop")).to be_valid
+    expect(@user.tags.new).to_not be_valid
+    expect(@user.tags.new(name: "oop")).to be_valid
   end
 
   describe 'interactions with notes' do

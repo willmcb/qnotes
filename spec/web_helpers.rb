@@ -1,8 +1,8 @@
 def feature_setup
   @test_user = create(:user)
   @test_user.collections.create(name: "Java")
-  Tag.create(name: 'python')
-  Tag.create(name: 'ruby')
+  @test_user.tags.create(name: 'python')
+  @test_user.tags.create(name: 'ruby')
   login(@test_user)
 end
 

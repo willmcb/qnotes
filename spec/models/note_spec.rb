@@ -5,8 +5,8 @@ RSpec.describe Note, type: :model do
   before :each do
     @user = create(:user)
     @collection = @user.collections.create(name: 'test')
-    @tag = Tag.create(name: 'ruby')
-    @tag2 = Tag.create(name: 'elixir')
+    @tag = @user.tags.create(name: 'ruby')
+    @tag2 = @user.tags.create(name: 'elixir')
     @note = @user.notes.create(title: "This is a note",
                                body: "this is a note body",
                                tags: [@tag, @tag2])
