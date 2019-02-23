@@ -20,12 +20,12 @@ RSpec.describe "Notes workflow" do
 
     it "makes a user log in to create a new note" do
       log_out
-      visit "notes/new"
+      visit new_note_path
       expect(page).to have_content("You must be logged in to access this page")
     end
 
     it "collection dropdown has 'default' collection" do
-      visit "notes/new"
+      visit new_note_path
       expect(page).to have_content("default")
     end
 
@@ -36,12 +36,17 @@ RSpec.describe "Notes workflow" do
   end
 
   describe "index" do
-    xit "can return all notes" do
+    it "can return all notes" do
+      add_note(title: note_title, body: note_body, col: 'default')
+      add_note(title: markdown_note_title, body: note_body, col: 'default')
+      visit notes_path
+      expect(page).to have_content(note_title)
+      expect(page).to have_content(markdown_note_title)
     end
   end
 
   describe "interaction with collections and tags" do
-    xit "can return notes associated with a tag and a collection" do
+    xit "can return notes associated within a tag and a collection" do
 
     end
   end
