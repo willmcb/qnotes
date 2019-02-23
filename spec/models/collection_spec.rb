@@ -28,6 +28,17 @@ RSpec.describe Collection, type: :model do
     end
   end
 
+  describe 'retrival' do
+    it 'collections can be returned by name' do
+      @user.collections.create(name: 'ruby')
+      @user.collections.create(name: 'python')
+      @user.collections.create(name: 'applescript')
+      expect(Collection.all_by_name.first.name).to match('applescript')
+      expect(Collection.all_by_name.last.name).to match('ruby')
+    end
+
+  end
+
   describe 'interaction with notes' do
     it 'allows a note to be added to a collection' do
       erlang_col = @user.collections.create(name: "erlang")

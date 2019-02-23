@@ -2,7 +2,7 @@ class CollectionsController < ApplicationController
   before_action :authorize
 
   def index
-    @collections = Collection.all
+    @collections = current_user.collections.all_by_name
   end
 
   def new
@@ -10,7 +10,7 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @collection = Collection.find(params[:id])
+    @collection = current_user.collections.find(params[:id])
     @notes = @collection.notes
   end
 

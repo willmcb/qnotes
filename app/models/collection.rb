@@ -3,4 +3,8 @@ class Collection < ApplicationRecord
   has_many :notes
   validates :name, presence: true, uniqueness: { scope: :user_id }
   validates_length_of :name, maximum: 100, allow_blank: false
+
+  def self.all_by_name
+    order(:name)
+  end
 end
