@@ -5,5 +5,5 @@
     %p= truncate(note.body, length: 50)
     %p
       %small
-        Tags: #{raw note.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')}
+        Tags: #{raw note.tags.map { |tag| link_to tag.name, tag_path(tag.id) }.join(', ')}
     %p= link_to "See note", note_path(note)

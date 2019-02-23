@@ -8,11 +8,7 @@ RSpec.describe "Collections workflow" do
   let(:note_title_two) { "This is something else" }
 
   before :each do
-    @test_user = create(:user)
-    @test_user.collections.create(name: "Java")
-    Tag.create(name: 'python')
-    Tag.create(name: 'ruby')
-    login(@test_user)
+    feature_setup
   end
 
   it "allows a user to create and view collection" do

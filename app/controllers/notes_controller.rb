@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_action :authorize
 
   def index
-    params[:tag] ? @notes = Note.tagged_with(params[:tag]) : @notes = Note.all
+    params[:tag] ? @notes = current_user.notes.tagged_with(params[:tag], current_user) : @notes = current_user.notes
   end
 
   def new

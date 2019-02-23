@@ -15,8 +15,8 @@ class Note < ApplicationRecord
     self.body.gsub!(/```/, "\n```")
   end
 
-  def self.tagged_with(name)
-    Tag.find_by!(name: name).notes
+  def self.tagged_with(name, current_user)
+    current_user.tags.find_by!(name: name).notes
   end
 
   def tag_list
