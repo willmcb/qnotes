@@ -1,0 +1,28 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  %a.navbar-brand{:href => "#"} Qnotes
+  %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarNavDropdown.collapse.navbar-collapse
+    %ul.navbar-nav
+      %li.nav-item.dropdown
+        %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"} Notes
+        .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+          %a= link_to "Add", new_note_path, class: "dropdown-item"
+          %a= link_to "View", notes_path, class: "dropdown-item"
+      %li.nav-item.dropdown
+        %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"} Collections
+        .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+          %a= link_to "Add", new_collection_path, class: "dropdown-item"
+          %a= link_to "View", collections_path, class: "dropdown-item"
+      %li.nav-item.dropdown
+        %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"} Tags
+        .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+          %a= link_to "Add", new_tag_path, class: "dropdown-item"
+          %a= link_to "View", tags_path, class: "dropdown-item"
+      - if current_user
+        %li.nav-item
+          %a= link_to 'Logout', logout_path, class: "nav-link"
+      - else
+        %li.nav-item
+          %a= link_to 'Login', login_path, class: "nav-link"
+
