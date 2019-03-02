@@ -94,7 +94,7 @@ RSpec.describe "User authentication" do
       fill_in 'Email', with: @test_user.email
       fill_in 'Password', with: 'password'
       click_button 'Log in'
-      click_on 'Log out'
+      click_on 'Logout'
       expect(page).to_not have_content(@test_user.email)
       expect(page).to have_content('Logged out!')
 

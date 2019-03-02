@@ -8,16 +8,16 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    - if current_user
-      / logged in
-      = "Hi, #{current_user.username}"
-      | #{link_to 'Home', root_path} | #{link_to 'Log out', logout_path, method: :delete}
-      %hr/
-    - if notice
-      = notice
-    - if alert
-      = alert
-    = yield
+    = render 'shared/navigation'
+    %div.container.mt-3
+      - if notice
+        .alert.alert-info{:role => "alert"}
+          = notice
+      - if alert
+        .alert.alert-info{:role => "alert"}
+          = alert
+    %div.container
+      = yield
 
   :javascript
     $(document).on('ready page:load', function () {

@@ -14,7 +14,7 @@ def login(user)
 end
 
 def log_out
-  click_link 'Log out'
+  click_link 'Logout'
 end
 
 def add_note(title: 'title', col: 'Java',

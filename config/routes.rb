@@ -7,14 +7,12 @@ Rails.application.routes.draw do
 
   # sessions
 	get '/login' => 'sessions#new', as: 'login'
+  get '/logout' => 'sessions#destroy', as: 'logout'
 	delete '/logout' => 'sessions#destroy'
 
 	# create (post) action for when log in form is submitted:
   post '/' => 'sessions#create'
 	post '/login' => 'sessions#create'
-
-	# log out:
-	delete '/logout' => 'sessions#destroy'
 
   # notes
   resources :notes
@@ -22,8 +20,6 @@ Rails.application.routes.draw do
   # collections
   resources :collections
 
+  # tags
   resources :tags, only: [:index, :create, :new, :show]
-
-  # # tags
-
 end
