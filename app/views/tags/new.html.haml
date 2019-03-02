@@ -1,7 +1,11 @@
-= form_with model: @tag do |f|
-  %div
-    = f.label :name
-    = f.text_field :name, autofocus: true
-  %div
-    = f.submit "Add tag"
+.col-md-8.col-sm-10.offset-2
+  %h2.col-md-8 Add a tag
+  = form_with model: @tag do |f|
+    %div.form-group.col-md-8
+      = f.text_field :name,
+        autofocus: true,
+        placeholder: 'Enter a tag name.',
+        class: 'form-control'
+    %div.form-group.col-md-12
+      = f.submit "Add tag", class: 'btn btn-primary'
 

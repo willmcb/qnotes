@@ -1,14 +1,33 @@
 .col-md-8.col-sm-10.offset-2
-  %h1.text-center New Note
+  %h2.col-md-8 Add a note
   = simple_form_for @note, url: notes_path do |f|
-    %div
-      = f.input :title, autofocus: true, required: false
-    %div
-      = f.input :body, :as => :text, :input_html => { 'rows' => 10}, required: false
-    %div
-      = f.collection_select :collection, current_user.collections, :id, :name, include_blank: false
-    %div
-      = f.input :tag_ids, as: :select, collection: Tag.order(:name), label_method: :name,input_html: {multiple: true}
-    %div
-      = f.submit "Add note", class: 'btn btn-lg btn-primary float-right'
+    %div.form-group.col-md-12
+      = f.input :title,
+        autofocus: true,
+        required: false,
+        label: false,
+        placeholder: 'Add title',
+        class: 'form-control'
+    %div.form-group.col-md-12
+      = f.input :body, :as => :text,
+        :input_html => { 'rows' => 20},
+        required: false, label: false,
+        placeholder: 'Add note body',
+        class: 'form-control'
+    %div.form-group.col-md-4
+      = f.input :collection,
+        label: "Select a collection",
+        collection: current_user.collections,
+        include_blank: false,
+        required: false,
+        class: 'form-control'
+    %div.form-group.col-md-9
+      = f.input :tag_ids, as: :select,
+        collection: Tag.order(:name),
+        label_method: :name,
+        input_html: {multiple: true},
+        label: false, placeholder: 'Select tags',
+        class: 'form-control'
+    %div.form-group.col-md-12
+      = f.submit "Add note", class: 'btn btn-primary'
 

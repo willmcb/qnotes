@@ -1,7 +1,10 @@
-= form_with model: @collection do |f|
-  %div
-    = f.label :name
-    = f.text_field :name, autofocus: true
-  %div
-    = f.submit "Add collection"
-
+.col-md-8.col-sm-10.offset-2
+  %h2.col-md-8 Add a tag
+  = form_with model: @collection do |f|
+    %div.form-group.col-md-8
+      = f.text_field :name,
+        autofocus: true,
+        placeholder: 'Enter a collection name.',
+        class: 'form-control'
+    %div.form-group.col-md-12
+      = f.submit "Add collection", class: 'btn btn-primary'
