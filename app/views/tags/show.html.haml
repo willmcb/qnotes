@@ -1,5 +1,5 @@
 .col-md-8.offset-2
-  %h1="Notes by tag: #{ @tag.name}"
+  %h2=" Tag: #{@tag.name}"
   - @notes.each do |note|
     %h2= note.title
     %p

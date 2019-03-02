@@ -1,5 +1,5 @@
 .col-md-8.offset-2
-  %h1="Collection: #{ @collection.name}"
+  %h2="Collection: #{ @collection.name}"
   - @notes.each do |note|
     %h2= note.title
     %p= truncate(note.body, length: 50)

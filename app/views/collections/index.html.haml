@@ -1,4 +1,8 @@
-%ul
+.col-md-8.col-sm-10.offset-2
+  %form
+    .form-group
+      %input#search.form-control{ placeholder: "Search for a collection...",
+        type: "text"}/
   - @collections.each do |collection|
-    %li
-      = link_to(collection.name, collection_path(collection.id))
+    %span.badge.badge-info.text-white.item
+      = link_to(collection.name, collection_path(collection.id), class: 'text-white')

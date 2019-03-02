@@ -1,4 +1,8 @@
-%ul
+.col-md-8.col-sm-10.offset-2
+  %form
+    .form-group
+      %input#search.form-control{ placeholder: "Search for a tag...",
+        type: "text"}/
   - @tags.each do |tag|
-    %li
-      = link_to(tag.name, tag_path(tag.id))
+    %span.badge.badge-success.text-white.item
+      = link_to(tag.name, tag_path(tag.id), class: 'text-white')
