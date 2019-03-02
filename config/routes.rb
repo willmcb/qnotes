@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   # sessions
 	get '/login' => 'sessions#new', as: 'login'
   get '/logout' => 'sessions#destroy', as: 'logout'
-	delete '/logout' => 'sessions#destroy'
 
 	# create (post) action for when log in form is submitted:
   post '/' => 'sessions#create'
