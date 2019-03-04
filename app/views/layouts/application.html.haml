@@ -10,7 +10,7 @@
   %body
     - if current_user
       = render 'shared/navigation'
-    %div.container.mt-3
+    %div.container-fluid.mt-3
       - if notice
         .alert.alert-info{:role => "alert"}
           = notice

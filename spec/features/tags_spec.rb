@@ -13,7 +13,7 @@ RSpec.describe "Tags workflow" do
 
   it "allows a user to create a new tag" do
     visit new_tag_path
-    fill_in 'Name', with: 'cobol'
+    fill_in 'name', with: 'cobol'
     click_button 'Add tag'
     expect(page).to have_content('New tag has been saved')
   end

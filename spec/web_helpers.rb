@@ -21,10 +21,10 @@ def add_note(title: 'title', col: 'Java',
              tag1: 'python', tag2: 'ruby',
              body: 'Note body about ruby note')
   visit new_note_path
-  fill_in 'Title', with: title
-  fill_in 'Body', with: body
+  fill_in 'note_title', with: title
+  fill_in 'note_body', with: body
   select col, :from => 'note_collection'
-  select tag1, :from => 'Tag ids'
-  select tag2, :from => 'Tag ids'
+  select tag1, :from => 'note_tag_ids'
+  select tag2, :from => 'note_tag_ids'
   click_button 'Add note'
 end
