@@ -13,14 +13,14 @@ RSpec.describe "Collections workflow" do
 
   it "allows a user to create and view collection" do
     visit 'collections/new'
-    fill_in 'Name', with: collection_name
+    fill_in 'name', with: collection_name
     click_button 'Add collection'
     expect(page).to have_content(collection_name)
   end
 
   it 'allows a new collection to be selected when the user tries to add a new note' do
     visit 'collections/new'
-    fill_in 'Name', with: another_collection_name
+    fill_in 'name', with: another_collection_name
     click_button 'Add collection'
     visit 'notes/new'
     expect(page).to have_content(another_collection_name)

@@ -8,8 +8,9 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = render 'shared/navigation'
-    %div.container.mt-3
+    - if current_user
+      = render 'shared/navigation'
+    %div.container-fluid.mt-3
       - if notice
         .alert.alert-info{:role => "alert"}
           = notice
@@ -18,12 +19,4 @@
           = alert
     %div.container
       = yield
-
-  :javascript
-    $(document).on('ready page:load', function () {
-      $('#note_tag_ids').chosen({
-        allow_single_deselect: true,
-        width: '100%'
-      })
-    });
 
