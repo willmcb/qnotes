@@ -23,7 +23,7 @@
         class: 'form-control'
     %div.form-group.col-md-9
       = f.input :tag_ids, as: :select,
-        collection: Tag.order(:name),
+        collection: current_user.tags.order(:name),
         label_method: :name,
         input_html: {multiple: true},
         label: false, placeholder: 'Select tags',
