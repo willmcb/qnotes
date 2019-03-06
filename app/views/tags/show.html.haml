@@ -1,8 +1,6 @@
 .col-md-8.offset-2
-  %h2=" Tag: #{@tag.name}"
+  %h2.mb-3
+    = octicon 'tag', height: 30
+    = " #{ @tag.name}"
   - @notes.each do |note|
-    %h2= note.title
-    %p
-      %small
-        Tags: #{raw note.tags.map { |t| link_to t.name, tag_path(t.id) }.join(', ')}
-    %p= link_to "See note", note_path(note)
+    = render 'shared/note_card', note: note, collection: note.collection, tag: nil

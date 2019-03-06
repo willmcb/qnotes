@@ -1,10 +1,10 @@
 .col-md-8.offset-2
+  %h2.mb-3
+    = octicon 'note', height: 30
+    = "All notes"
+  %form
+    .form-group
+      %input#search.form-control{ placeholder: "Search for a note...",
+        type: "text"}/
   - @notes.each do |note|
-    %h2= note.title
-    %p
-      %small
-        Tags: #{raw note.tags.map { |tag| link_to tag.name, tag_path(tag.id) }.join(', ')}
-    %p
-      %small
-        Collection: #{link_to note.collection.name, collection_path(note.collection)}
-    %p= link_to "See note", note_path(note)
+    = render 'shared/note_card', note: note, collection: note.collection

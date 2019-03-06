@@ -1,9 +1,6 @@
 .col-md-8.offset-2
-  %h2="Collection: #{ @collection.name}"
+  %h2.mb-3
+    = octicon 'file-directory', height: 30
+    = " #{ @collection.name}"
   - @notes.each do |note|
-    %h2= note.title
-    %p= truncate(note.body, length: 50)
-    %p
-      %small
-        Tags: #{raw note.tags.map { |tag| link_to tag.name, tag_path(tag.id) }.join(', ')}
-    %p= link_to "See note", note_path(note)
+    = render 'shared/note_card', note: note, collection: nil

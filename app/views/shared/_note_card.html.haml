@@ -1,0 +1,11 @@
+.card.mb-3.bg-light
+  .card-body
+    %h4.card-title
+      %p= link_to note.title, note_path(note)
+    - if collection
+      = render 'shared/collection_label', collection: note.collection
+    %p.card-text
+      -if tag
+        - note.tags.each do |tag|
+          = render 'shared/tag', tag: tag
+
