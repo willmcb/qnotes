@@ -2,13 +2,12 @@
   %h2.mb-3
     = octicon 'file-directory', height: 30
     = "Your collections"
+    %a= link_to "Add a collection", new_collection_path,
+      class: "btn btn-outline-info float-right"
   %form
     .form-group
       %input#search.form-control{ placeholder: "Search for a collection...",
         type: "text"}/
   - @collections.each do |collection|
     = render 'shared/collection_label', collection: collection
-
-%div.col-md-8.offset-2
-  %a= link_to "Add a collection", new_collection_path, class: "btn btn-outline-info float-right mt-3"
 
