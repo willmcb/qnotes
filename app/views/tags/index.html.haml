@@ -1,7 +1,13 @@
 .col-md-8.col-sm-10.offset-2
+  %h2.mb-3
+    = octicon 'tag', height: 30
+    = "Your tags"
   %form
     .form-group
       %input#search.form-control{ placeholder: "Search for a tag...",
         type: "text"}/
   - @tags.each do |tag|
     = render 'shared/tag', tag: tag
+
+%div.col-md-8.offset-2
+  %a= link_to "Add a tag", new_tag_path, class: "btn btn-outline-success float-right mt-3"
