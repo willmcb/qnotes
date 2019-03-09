@@ -4,5 +4,4 @@
       %input#search.form-control{ placeholder: "Search for a tag...",
         type: "text"}/
   - @tags.each do |tag|
-    %span.badge.badge-success.text-white.item
-      = link_to(tag.name, tag_path(tag.id), class: 'text-white')
+    = render 'shared/tag', tag: tag

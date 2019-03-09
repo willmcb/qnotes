@@ -4,5 +4,4 @@
       %input#search.form-control{ placeholder: "Search for a collection...",
         type: "text"}/
   - @collections.each do |collection|
-    %span.badge.badge-info.text-white.item
-      = link_to(collection.name, collection_path(collection.id), class: 'text-white')
+    = render 'shared/collection_label', collection: collection
