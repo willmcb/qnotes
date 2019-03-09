@@ -9,7 +9,4 @@
       %a= link_to octicon('tag'), tags_path, class: "mr-5"
 
     %li.nav-item
-      - if current_user
-        %a= link_to octicon('sign-out') , login_path,  class: "mr-5"
-      - else
-        %a= link_to octicon('sign-in') , login_path,  class: "mr-5"
+      %a= link_to octicon('sign-out') , logout_path,  class: "mr-5"
