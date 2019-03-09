@@ -1,9 +1,10 @@
 .col-md-8.offset-2
-  %h4= @note.title
+  %h4= "Q: #{@note.title}"
+  %hr
   %p= markdown(@note.body)
-  %p
-    %small
-      Tags: #{raw @note.tags.map { |tag| link_to tag.name, tag_path(tag.id) }.join(', ')}
-  %p
-    %small
-      Collection: #{link_to @note.collection.name, collection_path(@note.collection)}
+  %hr
+  = render 'shared/collection_label', collection: @note.collection
+  - @note.tags.each do |tag|
+    = render 'shared/tag', tag: tag
+  %div.mb-5
+

@@ -1,11 +1,15 @@
 .col-md-8.col-sm-10.offset-2
-  %h2.col-md-8 Add a collection
-  = form_with model: @collection do |f|
-    %div.form-group.col-md-8
+  %h2.mb-3
+    = octicon 'file-directory', height: 30
+    = "Add a collection"
+    %input{type: "submit",
+           value: "Add collection",
+           class: "btn btn-outline-info float-right",
+           form: "collection-form"}
+  = form_with model: @collection, id: "collection-form" do |f|
+    %div.form-group#collection-form
       = f.text_field :name,
         autofocus: true,
         placeholder: 'Enter a collection name.',
         class: 'form-control',
         id: 'name'
-    %div.form-group.col-md-12
-      = f.submit "Add collection", class: 'btn btn-primary'

@@ -1,12 +1,15 @@
 .col-md-8.col-sm-10.offset-2
-  %h2.col-md-8 Add a tag
-  = form_with model: @tag do |f|
-    %div.form-group.col-md-8
+  %h2.mb-3
+    = octicon 'tag', height: 30
+    = "Add a tag"
+    %input{type: "submit",
+           value: "Add tag",
+           class: "btn btn-outline-success float-right",
+           form: "tag-form"}
+  = form_with model: @tag, id: "tag-form" do |f|
+    %div.form-group
       = f.text_field :name,
         autofocus: true,
         placeholder: 'Enter a tag name.',
         class: 'form-control',
         id: 'name'
-    %div.form-group.col-md-12
-      = f.submit "Add tag", class: 'btn btn-primary'
-
