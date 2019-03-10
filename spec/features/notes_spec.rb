@@ -45,6 +45,19 @@ RSpec.describe "Notes workflow" do
     end
   end
 
+  describe 'edit' do
+    it 'can edit a note' do
+      edited_title = "This is an edited title"
+      add_note(title: note_title)
+      click_link 'Edit note'
+      fill_in 'note_title', with: edited_title
+      fill_in 'note_body', with: markdown_note_body
+      click_button 'Update note'
+      expect(page).to have_content(edited_title)
+      expect(page).to have_content("Note has been updated")
+    end
+  end
+
   describe "interaction with collections and tags" do
     xit "can return notes associated within a tag and a collection" do
 
