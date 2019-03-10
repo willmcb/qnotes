@@ -6,7 +6,8 @@
            value: "Add note",
            class: "btn btn-outline-info float-right",
            form: "note-form"}
-  = simple_form_for @note, url: notes_path, id: "note-form" do |f|
+
+  = simple_form_for @note, url: notes_path, html: { id: "note-form" } do |f|
     %div.form-group
       = f.input :title,
         autofocus: true,
