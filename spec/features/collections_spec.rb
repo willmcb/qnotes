@@ -29,7 +29,7 @@ RSpec.describe "Collections workflow" do
   it 'allows a user to add a collection to a note' do
     visit new_note_path
     add_note(title: note_title)
-    expect(page).to have_content("Collection: Java")
+    expect(page).to have_content("Java")
   end
 
   it 'allows a user to view all the notes asscociated with a collection' do

@@ -31,7 +31,7 @@ RSpec.describe "Notes workflow" do
 
     it 'allows allows a user to create and tag note' do
       add_note(title: note_title)
-      expect(page).to have_content("Tags: python, ruby")
+      expect(page).to have_content("python", "ruby")
     end
   end
 
