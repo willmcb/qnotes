@@ -1,13 +1,15 @@
-%nav.navbar.navbar-expand-lg.navbar-light{style: "background-color: #e3f2fd;"}
+%nav.navbar.navbar-expand-lg.navbar-light{style: "background-color: #e3f2fd; height: 60px"}
   %ul.navbar-nav.mx-auto
     %li.nav-item
-      %a= link_to octicon('note'), notes_path, class: "mr-5"
+      %a= link_to octicon('note', width: 30, height: 30), notes_path, class: "mr-5"
 
     %li.nav-item
-      %a= link_to octicon('file-directory'), collections_path, class: "mr-5"
+      %a= link_to octicon('file-directory', width: 30, height: 30), collections_path, class: "mr-5"
 
     %li.nav-item
-      %a= link_to octicon('tag'), tags_path, class: "mr-5"
+      %a= link_to octicon('tag', width: 30, height: 30), tags_path, class: "mr-5"
 
     %li.nav-item
-      %a= link_to octicon('sign-out') , logout_path,  class: "mr-5"
+      %a= link_to octicon('sign-out', width: 30, height: 30) , logout_path,  class: "mr-5"
+
+%br
