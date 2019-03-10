@@ -24,11 +24,11 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note = current_user.notes.find(params[:id])
+    @note = note_by_id(params[:id])
   end
 
   def edit
-    @note = current_user.notes.find(params[:id])
+    @note = note_by_id(params[:id])
   end
 
   def update
@@ -46,10 +46,27 @@ class NotesController < ApplicationController
 
   end
 
+  def destroy
+    @note = note_by_id(params[:id])
+    @destroyed = @note.destroy
+    if @destroyed
+      flash[:notice] = "Note has been deleted"
+      redirect_to notes_path
+    else
+      flash[:notice] = "There was an error when deleting the note"
+      redirect_to edit_note_path(params[:id])
+    end
+  end
+
   private
 
   def note_by_id(id)
-    current_user.notes.find(id)
+    begin
+      current_user.notes.find(id)
+    rescue
+      flash[:notice] = "ERROR: Note cannot be found"
+      redirect_to notes_path
+    end
   end
 
   def tags(ids)
