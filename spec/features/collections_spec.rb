@@ -40,4 +40,23 @@ RSpec.describe "Collections workflow" do
 
   xit 'allows you to view all collections' do
   end
+
+  it 'allows a user to delete a collection that has no notes' do
+    visit 'collections/new'
+    fill_in 'name', with: 'test-collection'
+    click_button 'Add collection'
+    visit '/collections'
+    click_link 'test-collection'
+    click_link 'Delete collection'
+    expect(page).to have_content("The 'test-collection' collection has been deleted")
+  end
+
+  it 'stops you from deleting a collection that has notes' do
+    add_note(title: note_title)
+    visit 'collections'
+    click_link 'Java'
+    click_link 'Delete collection'
+    expect(page).to have_content("You can't delete a collection that has notes in it")
+  end
+
 end

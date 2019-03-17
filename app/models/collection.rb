@@ -7,4 +7,8 @@ class Collection < ApplicationRecord
   def self.all_by_name
     order(:name)
   end
+
+  def has_notes?
+    self.notes.size != 0
+  end
 end

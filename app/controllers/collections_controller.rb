@@ -25,6 +25,22 @@ class CollectionsController < ApplicationController
     redirect_to collections_path
   end
 
+  def destroy
+    @collection = current_user.collections.find(params[:id])
+    unless @collection.has_notes?
+      @destroyed = @collection.destroy
+      if @destroyed
+        flash[:notice] = "The '#{@collection.name}' collection has been deleted"
+        redirect_to collections_path
+      else
+        redirect_to collection_path(params[:id])
+      end
+    else
+      flash[:notice] = "You can't delete a collection that has notes in it"
+      redirect_to collection_path(params[:id])
+    end
+  end
+
   private
 
   def collection_params
