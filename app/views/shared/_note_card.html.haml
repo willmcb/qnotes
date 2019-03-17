@@ -1,11 +1,11 @@
-.div.mb-1.mt-4
+.div.mb-1.mt-4.note-item
   .div
     %h4
       %p= link_to note.title, note_path(note)
-- if collection
-  = render 'shared/collection_label', collection: note.collection
-- if tag
-  - note.tags.each do |tag|
-    = render 'shared/tag', tag: tag
-%hr
+  - if collection
+    = render 'shared/collection_label', collection: note.collection
+  - if tag
+    - note.tags.each do |tag|
+      = render 'shared/tag', tag: tag
+  %hr
 

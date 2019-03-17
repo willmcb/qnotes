@@ -1,15 +1,31 @@
-$(document).on('turbolinks:load', function() {
-  $('#search').keyup(function(){
+function includes(textToSearch, value){
+    return textToSearch.toUpperCase().indexOf(value) > -1;
+}
+
+function hide(element){
+  element.style.display = "none";
+}
+
+function show(element){
+  element.style.display = "";
+}
+
+function search(searchBarId, itemClass) {
+  $(searchBarId).keyup(function(){
     var input = this.value.toUpperCase();
-    var items = document.getElementsByClassName("item");
+    var items = document.getElementsByClassName(itemClass);
     for(var i = 0; i < items.length; i++) {
        var txtValue = items[i].innerText;
-       console.log(txtValue);
-       if(txtValue.toUpperCase().indexOf(input) > -1) {
-         items[i].style.display = "";
+       if(includes(txtValue, input)) {
+         show(items[i]);
        } else {
-         items[i].style.display = "none";
+         hide(items[i]);
        }
     }
   });
+}
+
+$(document).on('turbolinks:load', function() {
+   search('#search', 'item');
+   search('#note-search', 'note-item') ;
 });
