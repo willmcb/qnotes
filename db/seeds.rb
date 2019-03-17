@@ -5,26 +5,89 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
 
-user = User.create(username: "willtwo",
-                   email: "willtwo@test.com",
+note_body_text = 'Etiam at egestas turpis. Lorem ipsum dolor sit amet, consectetur' \
+                 ' adipiscing elit. Fusce cursus pulvinar quam, a eleifend purus lacinia' \
+                 ' eu. Pellentesque viverra tincidunt posuere. '
+
+note_body_text2 = 'Mauris eu interdum orci, et facilisis odio. Proin porta fermentum' \
+                  ' massa, pellentesque tempus turpis maximus et. Aliquam erat volutpat. '
+
+note_body_java = <<-FOO
+\n
+```java
+public class Factorial
+{
+	public static void main(String[] args)
+	{	final int NUM_FACTS = 100;
+		for(int i = 0; i < NUM_FACTS; i++)
+			System.out.println( i + "! is " + factorial(i));
+	}
+
+	public static int factorial(int n)
+	{	int result = 1;
+		for(int i = 2; i <= n; i++)
+			result *= i;
+		return result;
+	}
+}
+```
+FOO
+
+note_body_ruby = <<-FOO
+\n
+```ruby
+# Say hi to everybody
+def say_hi
+  if @names.nil?
+    puts "..."
+  elsif @names.respond_to?("each")
+    # @names is a list of some kind, iterate!
+    @names.each do |name|
+      puts "Hello there"
+    end
+  else
+    puts "Hello there!"
+  end
+end
+```
+FOO
+
+user = User.create(username: "testuser",
+                   email: "testuser@test.com",
                    password: "password" )
 
 col1 = user.collections.create(name: "ruby")
-user.collections.create(name: "java")
+col2 = user.collections.create(name: "java")
+
 user.collections.create(name: "html")
 user.collections.create(name: "scala")
 user.collections.create(name: "algorithms")
 user.collections.create(name: "rails")
 
-user.notes.create(title: "test note",
-                  body: "this is the body",
-                  collection: col1)
+t1 = user.tags.create(name: "ruby")
+t2 = user.tags.create(name: "java")
+t3 = user.tags.create(name: "programming")
+t4 = user.tags.create(name: "computers")
 
-t1 = Tag.create(name: "ruby")
-t2 = Tag.create(name: "python")
+user.notes.create(title: "This is a ruby note",
+                  body: note_body_text + note_body_ruby + note_body_text2,
+                  collection: col1,
+                  tags: [t1, t3, t4])
 
-user.notes.create(title: "test note two", body: "this is the body again", collection: col1, tags: [t1, t2])
+user.notes.create(title: "This is a java note",
+                  body: note_body_text2 + note_body_java + note_body_text,
+                  collection: col2,
+                  tags: [t2, t3])
 
-Tag.create(name: "python")
-Tag.create(name: "golang")
+user.notes.create(title: "This is another ruby note",
+                  body: note_body_text2 + note_body_ruby + note_body_text + note_body_text2,
+                  collection: col1,
+                  tags: [t1, t3, t4])
+
+user.notes.create(title: "This is another java note",
+                  body: note_body_text + note_body_text2 + note_body_java + note_body_text,
+                  collection: col2,
+                  tags: [t2, t3])
+
