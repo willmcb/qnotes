@@ -2,5 +2,7 @@
   %h2.mb-3
     = octicon 'tag', height: 30
     = " #{ @tag.name}"
+    %a= link_to "Delete tag", tag_path(@tag), method: :delete,
+        class: "btn btn-outline-danger float-right"
   - @notes.each do |note|
     = render 'shared/note_card', note: note, collection: note.collection, tag: nil
