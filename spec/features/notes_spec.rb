@@ -58,6 +58,14 @@ RSpec.describe "Notes workflow" do
     end
   end
 
+  describe 'delete' do
+    it 'can delete  a note' do
+      add_note(title: note_title)
+      click_link 'Delete note'
+      expect(page).to have_content("Note has been deleted")
+    end
+  end
+
   describe "interaction with collections and tags" do
     xit "can return notes associated within a tag and a collection" do
 

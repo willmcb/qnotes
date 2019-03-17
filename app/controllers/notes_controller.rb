@@ -33,9 +33,9 @@ class NotesController < ApplicationController
 
   def update
     @updated = note_by_id(params[:id]).update!(title: note_params[:title],
-                                                        body: note_params[:body],
-                                                        collection_id: note_params[:collection],
-                                                        tag_ids: note_params[:tag_ids])
+                                               body: note_params[:body],
+                                               collection_id: note_params[:collection],
+                                               tag_ids: note_params[:tag_ids])
     if @updated
       flash[:notice] = "Note has been updated"
       redirect_to note_by_id(params[:id])
