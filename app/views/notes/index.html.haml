@@ -5,7 +5,7 @@
     %a= link_to "Add a note", new_note_path, class: "btn btn-outline-primary float-right"
   %form
     .form-group
-      %input#search.form-control{ placeholder: "Search for a note...",
+      %input#note-search.form-control{ placeholder: "Search for a note...",
         type: "text"}/
   - @notes.each do |note|
     = render 'shared/note_card', note: note, collection: note.collection
