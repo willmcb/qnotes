@@ -17,4 +17,11 @@ RSpec.describe "Tags workflow" do
     click_button 'Add tag'
     expect(page).to have_content('New tag has been saved')
   end
+
+  it 'can delete  a tag' do
+    visit '/tags'
+    click_link 'python'
+    click_link 'Delete tag'
+    expect(page).to have_content("The tag 'python' has been deleted")
+  end
 end

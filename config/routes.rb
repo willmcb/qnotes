@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   resources :collections
 
   # tags
-  resources :tags, only: [:index, :create, :new, :show]
+  resources :tags, only: [:index, :create, :new, :show, :destroy]
 end

@@ -12,6 +12,12 @@ RSpec.describe Tag, type: :model do
     expect(@user.tags.new(name: "oop")).to be_valid
   end
 
+  it "must have a unique name" do
+    @user.tags.create(name: "oop")
+    tag2 = @user.tags.create(name: "oop")
+    expect(tag2).to_not be_valid
+  end
+
   describe 'interactions with notes' do
 
     it 'can return the notes associated with a itself' do
