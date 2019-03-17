@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: qnotes_production
-  # username: qnotes
-  # password: <%= ENV['QNOTES_DATABASE_PASSWORD'] %>
+  username: qnotes
+  password: <%= ENV['QNOTES_DATABASE_PASSWORD'] %>
