@@ -2,7 +2,7 @@ class Note < ApplicationRecord
   belongs_to :user
   belongs_to :collection
 
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
   validates :title, presence: true, uniqueness: true

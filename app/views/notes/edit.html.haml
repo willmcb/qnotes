@@ -1,0 +1,42 @@
+.col-md-8.offset-2
+  %h2.mb-3
+    = octicon 'note', height: 30
+    = "Edit note"
+    %input{type: "submit",
+           value: "Update note",
+           class: "btn btn-outline-info float-right",
+           form: "edit-note-form"}
+
+  = simple_form_for @note, url: note_path(@note), html: { id: "edit-note-form" } do |f|
+    %div.form-group
+      = f.input :title,
+        autofocus: true,
+        required: false,
+        label: false,
+        placeholder: 'Add title',
+        class: 'form-control'
+    %div.form-group
+      = f.input :body, :as => :text,
+        :input_html => { 'rows' => 20},
+        required: false, label: false,
+        placeholder: 'Add note body',
+        class: 'form-control'
+    %div.mb-3
+      = octicon('file-directory', height: 30)
+    %div.form-group
+      = f.input :collection,
+        label: false,
+        collection: current_user.collections,
+        include_blank: false,
+        required: false,
+        class: 'form-control'
+    %div.mb-3
+      = octicon('tag', height: 30)
+    %div.form-group
+      = f.input :tag_ids, as: :select,
+        collection: current_user.tags.order(:name),
+        label_method: :name,
+        input_html: {multiple: true},
+        label: false, placeholder: 'Select tags',
+        class: 'form-control'
+

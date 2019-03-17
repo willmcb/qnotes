@@ -6,5 +6,9 @@
   = render 'shared/collection_label', collection: @note.collection
   - @note.tags.each do |tag|
     = render 'shared/tag', tag: tag
-  %div.mb-5
-
+  %div.mt-3.mb-5
+    %a= link_to "Edit note", edit_note_path(@note),
+        class: "btn btn-outline-warning float-left"
+    %a= link_to "Delete note", note_path(@note), method: :delete,
+        class: "btn btn-outline-warning float-right"
+%br
