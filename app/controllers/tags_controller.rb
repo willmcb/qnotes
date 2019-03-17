@@ -15,7 +15,7 @@ class TagsController < ApplicationController
       flash[:notice] = "New tag has been saved"
       redirect_to new_tag_path
     else
-      flash[:notice] = @tag.errors.full_messages.join(", ")
+      flash[:notice] = @tag.errors.messages[:name].first
       redirect_to new_tag_path
     end
   end
