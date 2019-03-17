@@ -18,7 +18,7 @@ class CollectionsController < ApplicationController
     collection = current_user.collections.new(name: collection_params[:name])
 
     if collection.save!
-        flash[:notice] = "Collection has been saved"
+      flash[:notice] = "Collection has been saved"
     else
       flash[:notice] = collection.errors.full_messages.join(", ")
     end
