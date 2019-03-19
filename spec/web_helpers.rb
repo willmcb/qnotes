@@ -28,3 +28,7 @@ def add_note(title: 'title', col: 'Java',
   select tag2, :from => 'note_tag_ids'
   click_button 'Add note'
 end
+
+def notes_json
+"[{\"user\":\"testuser\",\"collection\":\"default\",\"title\":\"this is a note title\",\"body\":\"this is the note body\",\"tags\":[{\"name\":\"python\"},{\"name\":\"ruby\"}]},{\"user\":\"testuser\",\"collection\":\"default\",\"title\":\"markdown test note\",\"body\":\"this is the note body\",\"tags\":[{\"name\":\"python\"},{\"name\":\"ruby\"}]}]"
+end

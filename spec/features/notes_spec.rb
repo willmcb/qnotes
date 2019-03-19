@@ -43,6 +43,13 @@ RSpec.describe "Notes workflow" do
       expect(page).to have_content(note_title)
       expect(page).to have_content(markdown_note_title)
     end
+
+    it 'can render notes as json' do
+      add_note(title: note_title, body: note_body, col: 'default')
+      add_note(title: markdown_note_title, body: note_body, col: 'default')
+      visit '/notes.json'
+      expect(page).to have_content(notes_json)
+    end
   end
 
   describe 'edit' do
