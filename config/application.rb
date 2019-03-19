@@ -29,5 +29,9 @@ module Qnotes
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.exception_handler = {
+      dev: 'on'
+    }
   end
 end

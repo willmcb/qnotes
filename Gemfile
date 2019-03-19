@@ -46,6 +46,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'redcarpet', '~> 3.4'
 gem 'coderay', '~> 1.1', '>= 1.1.2'
 
+# easy error pages
+gem 'exception_handler', '~> 0.8.0.0'
 
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.5'
