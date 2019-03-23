@@ -1,11 +1,16 @@
 module ApplicationHelper
   class CodeRayify < Redcarpet::Render::HTML
     def block_code(code, language)
-      CodeRay.scan(code, language).div
+      begin
+        CodeRay.scan(code, language).div
+      rescue ArgumentError
+        Rails.logger.warn "No language detected in note code block"
+      end
     end
   end
 
   def markdown(text)
+
     coderayified = CodeRayify.new(:filter_html => true,
                                   :hard_wrap => true)
     options = {
@@ -17,6 +22,12 @@ module ApplicationHelper
       :superscript => true
     }
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
-    markdown_to_html.render(text).html_safe
+
+    begin
+      markdown_to_html.render(text).html_safe
+    rescue TypeError
+      Rails.logger.warn "No language type in markdown defaulting to plain text"
+      return text
+    end
   end
 end

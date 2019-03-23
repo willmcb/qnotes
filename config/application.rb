@@ -31,7 +31,7 @@ module Qnotes
     config.generators.system_tests = nil
 
     config.exception_handler = {
-      dev: 'on'
+      dev: nil
     }
   end
 end

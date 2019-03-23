@@ -12,7 +12,7 @@ class Note < ApplicationRecord
 
   before_save do
     # add newline before code blocks
-    self.body.gsub!(/```/, "\n```")
+    self.body.gsub!(/```/, "\n```") if self.new_record?
   end
 
   def self.tagged_with(name, current_user)
