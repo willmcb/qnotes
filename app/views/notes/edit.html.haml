@@ -26,10 +26,11 @@
     %div.form-group
       = f.input :collection,
         label: false,
-        collection: current_user.collections,
+        collection: current_user.collections.sort_by{|col| col.name},
         include_blank: false,
         required: false,
-        class: 'form-control'
+        class: 'form-control',
+        selected: @note.collection.id
     %div.mb-3
       = octicon('tag', height: 30)
     %div.form-group
