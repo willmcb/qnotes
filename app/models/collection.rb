@@ -1,7 +1,8 @@
 class Collection < ApplicationRecord
   belongs_to :user
   has_many :notes
-  validates :name, presence: true, uniqueness: { scope: :user_id }
+  validates :name, presence: true, uniqueness: { scope: :user_id,
+                                                 message: "Collection already exists" }
   validates_length_of :name, maximum: 100, allow_blank: false
 
   def self.all_by_name
