@@ -2,7 +2,7 @@
   %h2.mb-3
     = octicon 'note', height: 30
     = "All notes"
-    %a= link_to "Add a note", new_note_path, class: "btn btn-outline-primary float-right"
+    %a= link_to "Add", new_note_path, class: "btn btn-outline-primary float-right"
   %form
     .form-group
       %input#note-search.form-control{ placeholder: "Search for a note...",
