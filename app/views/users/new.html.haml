@@ -1,6 +1,6 @@
 .col-sm-12.col-lg-8.offset-lg-2
   %h2.mb-3 Qnotes
-  %h4.mb-4 A simple way to organise your markdown code notes
+  %h4.font-italic.mb-4 A simple way to organise your markdown code notes
   %h2.col-md-8 Sign up
   = form_for @user do |f|
     %div.form-group.col-md-8
@@ -13,3 +13,4 @@
       = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password confirmation'
     %div.form-group.col-md-8
       = f.submit "Sign up", class: 'btn btn-primary'
+    %a= link_to "Back to login", login_path, class: 'col-md-8'
